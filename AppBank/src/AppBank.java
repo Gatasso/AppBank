@@ -49,6 +49,8 @@ public class AppBank {
                     budgetClient = budgetClient - withDrawValue;
                     System.out.println("Saldo atualizado para: R$" + budgetClient);  
                     break;
+                default: 
+                    System.out.println("Opção inválida");
             
             }
             
