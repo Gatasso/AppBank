@@ -46,8 +46,13 @@ public class AppBank {
                 case 3:
                     System.out.println("Qual o valor do saque?");
                     withDrawValue = scanner.nextDouble();
+                    if (withDrawValue > budgetClient) {
+                        System.out.println("Operação inválida");
+                        System.out.println("Saque maior que Saldo");
+                    } else {
                     budgetClient = budgetClient - withDrawValue;
-                    System.out.println("Saldo atualizado para: R$" + budgetClient);  
+                    System.out.println("Saldo atualizado para: R$" + budgetClient);
+                    }
                     break;
                 default: 
                     System.out.println("Opção inválida");
