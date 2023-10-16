@@ -1,62 +1,47 @@
+import br.com.appbank.Account;
 import java.util.Scanner;
-
 public class AppBank {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int commandMenu = 0;
-        double depositValue;
-        double withDrawValue;
-        String nameClient = "Matt Galss Romeu";
-        String accType = "Corrente";
-        double budgetClient = 5000;
-        String initialMenu = """
-                ***************************
-                        MGR BANK
+        Account acc01 = new Account();
+        //coletando dados iniciais
+        System.out.println("Seja bem vindo, informe seu nome");
+        acc01.setNameClient(scanner.next());
+        System.out.println("Qual será o tipo da sua conta?");
+        acc01.setAccType(scanner.next());
+        System.out.println("Qual valor inicial você irá depositar?");
+        acc01.setBudgetClient(scanner.nextDouble());
+        acc01.initialMenu();
+        int commandMenu = 0; //variável de controle para switch case
 
-                NAME:  %s
-                TIPO CONTA:  %s
-                SALDO: R$ %.2f    
-                """  .formatted(nameClient, accType, budgetClient);
-        String menu = """
-                ***************************
-                        MGR BANK
-
-                1 - Consultar Saldo
-                2 - Depósito
-                3 - Saque
-                4 - Sair    
-                """;
-        System.out.println(initialMenu);    
-            
+        //operações interativas
         while (commandMenu != 4) {
-        System.out.println(menu);
+        acc01.menu();
         commandMenu = scanner.nextInt();
             
             switch (commandMenu) {
                 case 1:
-                    System.out.println(budgetClient); 
-                    System.out.println("O seu saldo é de: R$" + budgetClient);                   
+                    System.out.println("O seu saldo é de: R$" + acc01.getBudgetClient());
                     break;
                 case 2: 
                     System.out.println("Qual o valor do depósito?");
-                    depositValue = scanner.nextDouble();
-                    budgetClient = budgetClient + depositValue;
-                    System.out.println("Saldo atualizado para: R$" + budgetClient);                                     
+                    acc01.setDepositValue(scanner.nextDouble());
+                    acc01.setBudgetClient(acc01.getBudgetClient() + acc01.getDepositValue());
+                    System.out.println("Saldo atualizado para: R$" + acc01.getBudgetClient());
                     break;
                 case 3:
                     System.out.println("Qual o valor do saque?");
-                    withDrawValue = scanner.nextDouble();
-                    if (withDrawValue > budgetClient) {
+                    acc01.setWithDrawValue(scanner.nextDouble());
+                    if (acc01.getWithDrawValue()> acc01.getBudgetClient()) {
                         System.out.println("Operação inválida");
                         System.out.println("Saque maior que Saldo");
                     } else {
-                    budgetClient = budgetClient - withDrawValue;
-                    System.out.println("Saldo atualizado para: R$" + budgetClient);
+                    acc01.setBudgetClient(acc01.getBudgetClient()- acc01.getWithDrawValue());
+                    System.out.println("Saldo atualizado para: R$" + acc01.getBudgetClient());
                     }
                     break;
                 default: 
                     System.out.println("Opção inválida");
-            
             }
             
         }
