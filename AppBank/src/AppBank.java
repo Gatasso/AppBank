@@ -1,4 +1,5 @@
 import br.com.appbank.Account;
+
 import java.util.Scanner;
 public class AppBank {
     public static void main(String[] args) {
@@ -21,24 +22,15 @@ public class AppBank {
             
             switch (commandMenu) {
                 case 1:
-                    System.out.println("O seu saldo é de: R$" + acc01.getBudgetClient());
+                    acc01.opCheck();
                     break;
                 case 2: 
-                    System.out.println("Qual o valor do depósito?");
-                    acc01.setDepositValue(scanner.nextDouble());
-                    acc01.setBudgetClient(acc01.getBudgetClient() + acc01.getDepositValue());
-                    System.out.println("Saldo atualizado para: R$" + acc01.getBudgetClient());
+                    acc01.opDeposit(scanner);
                     break;
                 case 3:
-                    System.out.println("Qual o valor do saque?");
-                    acc01.setWithDrawValue(scanner.nextDouble());
-                    if (acc01.getWithDrawValue()> acc01.getBudgetClient()) {
-                        System.out.println("Operação inválida");
-                        System.out.println("Saque maior que Saldo");
-                    } else {
-                    acc01.setBudgetClient(acc01.getBudgetClient()- acc01.getWithDrawValue());
-                    System.out.println("Saldo atualizado para: R$" + acc01.getBudgetClient());
-                    }
+                    acc01.opWithdraw(scanner);
+                    break;
+                case 4:
                     break;
                 default: 
                     System.out.println("Opção inválida");
