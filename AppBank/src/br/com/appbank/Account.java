@@ -41,13 +41,13 @@ public class Account{
     public void opWithdraw(Scanner scanner){
         System.out.println("Qual o valor do saque?");
         setWithDrawValue(scanner.nextDouble());
-        if (withDrawValue> budgetClient) {
+      /*  if (withDrawValue> budgetClient) {
             System.out.println("Operação inválida");
             System.out.println("Saque maior que Saldo");
-        } else {
+        } else {*/
             setBudgetClient(budgetClient- withDrawValue);
             System.out.println("Saldo atualizado para: R$" + budgetClient);
-        }
+        //}
     }
 /*********************************************************************************/
 //Setters
@@ -58,7 +58,12 @@ public class Account{
         this.depositValue = depositValue;
     }
     public void setWithDrawValue(double withDrawValue) {
-        this.withDrawValue = withDrawValue;
+        if (withDrawValue> budgetClient) {
+            System.out.println("Operação inválida");
+            System.out.println("Saque maior que Saldo");
+        }else {
+            this.withDrawValue = withDrawValue;
+        }
     }
     public void setNameClient(String nameClient) {
         this.nameClient = nameClient;
