@@ -3,9 +3,18 @@ package br.com.appbank;
 import java.util.Scanner;
 
 public class Account{
-    private String nameClient, accType;
-    private double budgetClient, depositValue, withDrawValue;
+    protected String nameClient, accType;
+    protected double budgetClient, depositValue, withDrawValue;
 
+
+    public void welcomeMenu(Scanner scanner){
+        //coletando dados iniciais
+        System.out.println("Seja bem vindo, informe seu nome");
+        setNameClient(scanner.next());
+        System.out.println("Qual será o tipo da sua conta?");
+        System.out.println("Corrente ou Poupança?");
+        setAccType(scanner.next());
+    }
     public void initialMenu() {
         System.out.printf("""
                 ***************************
@@ -13,8 +22,7 @@ public class Account{
 
                 NAME:  %s      \s
                 TIPO CONTA:  %s\s
-                SALDO: R$ %.2f  \s
-                %n""", nameClient, accType, budgetClient);
+                %n""", nameClient, accType);
     }
     public void  menu(){
         System.out.printf("""
@@ -41,13 +49,8 @@ public class Account{
     public void opWithdraw(Scanner scanner){
         System.out.println("Qual o valor do saque?");
         setWithDrawValue(scanner.nextDouble());
-      /*  if (withDrawValue> budgetClient) {
-            System.out.println("Operação inválida");
-            System.out.println("Saque maior que Saldo");
-        } else {*/
-            setBudgetClient(budgetClient- withDrawValue);
-            System.out.println("Saldo atualizado para: R$" + budgetClient);
-        //}
+        setBudgetClient(budgetClient- withDrawValue);
+        System.out.println("Saldo atualizado para: R$" + budgetClient);
     }
 /*********************************************************************************/
 //Setters
@@ -61,6 +64,7 @@ public class Account{
         if (withDrawValue> budgetClient) {
             System.out.println("Operação inválida");
             System.out.println("Saque maior que Saldo");
+            this.withDrawValue = 0;
         }else {
             this.withDrawValue = withDrawValue;
         }
@@ -71,5 +75,12 @@ public class Account{
     public void setAccType(String accType) {
         this.accType = accType;
     }
-}
 
+/***********************************************************************/
+//Getters
+
+
+    public String getAccType() {
+        return accType;
+    }
+}
