@@ -6,15 +6,15 @@ public class AppBank {
         Scanner scanner = new Scanner(System.in);
         CheckingAccount acc01 = new CheckingAccount();
         //SavingAccount acc01 = null;
-        //acc01.welcomeMenu(scanner);
-        //acc01.initialMenu();
+        acc01.welcomeMenu(scanner);
+        acc01.initialMenu();
         int commandMenu = 0; //variável de controle para switch case
 
         //operações interativas
         while (commandMenu != 5) {
-        acc01.menu();
         acc01.creditLimit();
-        acc01.maintenanceTax();
+        acc01.setMaintenanceTax();
+        acc01.menu();
         commandMenu = scanner.nextInt();
             
             switch (commandMenu) {
@@ -28,14 +28,12 @@ public class AppBank {
                     acc01.opWithdraw(scanner);
                     break;
                 case 4:
-                    acc01.payBills(scanner);
+                    acc01.opPayBills(scanner);
                 case 5:
                     break;
                 default: 
                     System.out.println("Opção inválida");
             }
-            
-        }
-        scanner.close();
+        } scanner.close();
     }
 }
