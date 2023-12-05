@@ -4,6 +4,10 @@ import java.util.Scanner;
 public class CheckingAccount extends Account {
     private double maintenanceTax, creditLimit, paymentValue;
 
+    public CheckingAccount(String nameClient, String codigo) {
+        super(nameClient, codigo);
+    }
+
     @Override
     public void menu() {
         System.out.printf("""
