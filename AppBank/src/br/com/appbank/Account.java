@@ -2,27 +2,32 @@ package br.com.appbank;
 
 import java.util.Scanner;
 
-public class Account{
-    protected String nameClient, accType;
+public abstract class Account{
+    protected String nameClient;
+    private String codigo;
     protected double budgetClient, depositValue, withDrawValue;
 
+    public Account(String nameClient, String codigo){
+        this.nameClient = nameClient;
+        this.codigo = codigo;
+    }
 
-    public void welcomeMenu(Scanner scanner){
+    /* public void welcomeMenu(Scanner scanner){
         //coletando dados iniciais
         System.out.println("Seja bem vindo, informe seu nome");
         setNameClient(scanner.next());
         System.out.println("Qual será o tipo da sua conta?");
         System.out.println("Corrente ou Poupança?");
         setAccType(scanner.next());
-    }
+    }  */
+
     public void initialMenu() {
         System.out.printf("""
                 ***************************
                          MGR BANK
 
-                NAME:  %s      \s
-                TIPO CONTA:  %s\s
-                %n""", nameClient, accType);
+                NAME:  %s      %s\s
+                %n""", nameClient, codigo);
     }
     public void  menu(){
         System.out.printf("""
@@ -33,7 +38,7 @@ public class Account{
                 2 - Depósito
                 3 - Saque
                 4 - Sair   \s
-                """,nameClient,accType);
+                """,nameClient,codigo);
     }
 
     public void opCheck(){
@@ -69,18 +74,7 @@ public class Account{
             this.withDrawValue = withDrawValue;
         }
     }
-    public void setNameClient(String nameClient) {
+    /*public void setNameClient(String nameClient) {
         this.nameClient = nameClient;
-    }
-    public void setAccType(String accType) {
-        this.accType = accType;
-    }
-
-/***********************************************************************/
-//Getters
-
-
-    public String getAccType() {
-        return accType;
-    }
+    } */
 }
