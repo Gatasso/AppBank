@@ -3,7 +3,13 @@ package br.com.appbank;
 import java.util.Scanner;
 
 public class SavingAccount extends Account{
-    private double valueContribution, statusInvestor;
+    private double valueContribution;
+    private String statusInvestor;
+
+    public SavingAccount(String nameClient, String codigo, String statusInvestor) {
+        super(nameClient, codigo);
+        this.statusInvestor = statusInvestor;
+    }
 
     @Override
     public void menu() {
@@ -18,7 +24,6 @@ public class SavingAccount extends Account{
                 5 - Retornar MainScreen   \s
                 """,nameClient,statusInvestor);
     }
-// criar 3 produtos de investimentos e oferecer escolha
 // entrar no modo investimentos pelo mainscreen, retornar ao "menu" de checking account
 
     public void investmentMenu() {
@@ -42,17 +47,23 @@ public class SavingAccount extends Account{
         int choice = scanner.nextInt();
         switch(choice){
             case 1:
+                System.out.println("Qual o valor para simulação?");
+                double simulationValue = scanner.nextDouble();
+                System.out.printf("O valor no momento do saque será de: R$", (simulationValue + (simulationValue * 0.12)));
                 break;
             case 2:
+                System.out.println("Qual o valor para simulação?");
+                simulationValue = scanner.nextDouble();
+                System.out.printf("O valor no momento do saque será de: R$", (simulationValue + (simulationValue * 0.08)));
                 break;
             case 3:
+                System.out.println("Qual o valor para simulação?");
+                simulationValue = scanner.nextDouble();
+                System.out.printf("O valor no momento do saque será de: R$", (simulationValue + (simulationValue * 0.1)));
                 break;
             default:
                 break;
         }
-
-
-
     }
 
     public void opContribution(Scanner scanner){
