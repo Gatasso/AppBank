@@ -24,11 +24,11 @@ public class Account implements Operations {
     }
 
     public void setWithDrawValue(double withDrawValue) {
-        if (withDrawValue> budgetClient) {
+        if (withDrawValue > budgetClient) {
             System.out.println("Operação inválida");
             System.out.println("Saque maior que Saldo");
             this.withDrawValue = 0;
-        }else {
+        } else {
             this.withDrawValue = withDrawValue;
         }
     }
@@ -40,24 +40,25 @@ public class Account implements Operations {
     }
 
     public void setPaymentValue(double paymentValue) {
-        if (paymentValue > budgetClient + creditLimit) {
+        if (this.paymentValue > budgetClient + creditLimit) {
             System.out.println("Saldo insuficiente para pagar a conta");
         }else this.paymentValue = paymentValue;
     }
 /*********************************************************************************************************************/
+//getters
+
+    public String getNameClient() {
+        return nameClient;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+    /*********************************************************************************************************************/
 // methods
 
-    /* public void welcomeMenu(Scanner scanner){
-        //coletando dados iniciais
-        System.out.println("Seja bem vindo, informe seu nome");
-        setNameClient(scanner.next());
-        System.out.println("Qual será o tipo da sua conta?");
-        System.out.println("Corrente ou Poupança?");
-        setAccType(scanner.next());
-    }  */
-
-public void initialMenu() {
-    System.out.printf("""
+    public void initialMenu() {
+        System.out.printf("""
                 ***************************
                          MGR BANK
 
@@ -72,22 +73,24 @@ public void initialMenu() {
                           MGR BANK
                 Limite: R$%s\s
                 Taxa Manutenção: %s %%\s
-                1 - Consultar Saldo
-                2 - Depósito
-                3 - Saque
-                4 - Pagar Conta
-                5 - Sair   \s
+                C - Consultar Saldo
+                D - Depósito
+                W - Saque
+                P - Pagar Conta
+                I - Saving Account
+                Q - Sair   \s
                 """,creditLimit,maintenanceTax);
+        }else {
+            System.out.printf("""
+                    ***************************
+                              MGR BANK
+                    %s                %s \s
+                    1 - Consultar Saldo
+                    2 - Depósito
+                    3 - Saque
+                    4 - Sair   \s
+                    """, nameClient, codigo);
         }
-        System.out.printf("""
-                ***************************
-                          MGR BANK
-                %s                %s \s
-                1 - Consultar Saldo
-                2 - Depósito
-                3 - Saque
-                4 - Sair   \s
-                """,nameClient,codigo);
     }
 
     @Override
