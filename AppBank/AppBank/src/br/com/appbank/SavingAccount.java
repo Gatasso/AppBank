@@ -17,13 +17,13 @@ public class SavingAccount extends Account{
         System.out.printf("""
                 ***************************
                           MGR BANK
-                %s             %s\s
+                %s  |   %s  |   %s\s
                 1 - Novo Investimento
                 2 - Aportar
                 3 - Sacar
                 4 - Consultar Investimentos
                 5 - Retornar MainScreen   \s
-                """,nameClient,statusInvestor);
+                """,getNameClient(), getCodigo(), statusInvestor);
     }
 // entrar no modo investimentos pelo mainscreen, retornar ao "menu" de checking account
 
