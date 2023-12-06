@@ -34,7 +34,12 @@ public class AppBank {
                     break;
                 case "I":
                     SavingAccount SAcc = new SavingAccount(acc01.getNameClient(), acc01.getCodigo(), "Saving","Saver");
-                    SAcc.menu();
+                    int chooseOption = 0;
+                    while(!(chooseOption == 4)){
+                        SAcc.menu();
+                        chooseOption = scanner.nextInt();
+                        SAcc.optionsMenu(scanner, chooseOption);
+                    }
                     break;
                 default:
                     System.out.println("Opção inválida");

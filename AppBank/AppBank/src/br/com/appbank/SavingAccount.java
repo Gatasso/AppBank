@@ -20,9 +20,8 @@ public class SavingAccount extends Account{
                 %s  |   %s  |   %s\s
                 1 - Novo Investimento
                 2 - Aportar
-                3 - Sacar
-                4 - Consultar Investimentos
-                5 - Retornar MainScreen   \s
+                3 - Consultar Investimentos
+                4 - Retornar MainScreen   \s
                 """,getNameClient(), getCodigo(), statusInvestor);
     }
 // entrar no modo investimentos pelo mainscreen, retornar ao "menu" de checking account
@@ -44,23 +43,44 @@ public class SavingAccount extends Account{
                 4- Voltar para o Menu de Investimentos""");
     }
 
+    public void optionsMenu(Scanner scanner, int chooseOption){
+            switch (chooseOption) {
+                case 1:
+                    investmentMenu();
+                    opInvest(scanner);
+                    break;
+                case 2:
+                    opContribution(scanner);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+            }
+    }
+
     public void opInvest(Scanner scanner){
         int choice = scanner.nextInt();
         switch(choice){
             case 1:
                 System.out.println("Qual o valor para simulação?");
                 double simulationValue = scanner.nextDouble();
-                System.out.printf("O valor no momento do saque será de: R$", (simulationValue + (simulationValue * 0.12)));
+                double finalValue = (simulationValue + (simulationValue * 0.12));
+                System.out.println("O valor no momento do saque será de: R$" + finalValue);
                 break;
             case 2:
                 System.out.println("Qual o valor para simulação?");
                 simulationValue = scanner.nextDouble();
-                System.out.printf("O valor no momento do saque será de: R$", (simulationValue + (simulationValue * 0.08)));
+                finalValue = (simulationValue + (simulationValue * 0.08));
+                System.out.println("O valor no momento do saque será de: R$" + finalValue);
                 break;
             case 3:
                 System.out.println("Qual o valor para simulação?");
                 simulationValue = scanner.nextDouble();
-                System.out.printf("O valor no momento do saque será de: R$", (simulationValue + (simulationValue * 0.1)));
+                finalValue = (simulationValue + (simulationValue * 0.1));
+                System.out.println("O valor no momento do saque será de: R$" + finalValue);
                 break;
             default:
                 break;
