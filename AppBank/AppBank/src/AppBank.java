@@ -1,36 +1,42 @@
 import br.com.appbank.Account;
+import br.com.appbank.SavingAccount;
 
 import java.util.Scanner;
 public class AppBank {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Account acc01 = new Account("Matheus", "0001", "Checking") {
-        };
+        Account acc01 = new Account("Matheus", "0001", "Checking");
         acc01.initialMenu();
-        int commandMenu = 0; //variável de controle para switch case
-
         //operações interativas
-        while (commandMenu != 5) {
+        String commandMenu = "Running";
+        while (!commandMenu.equals("Q")) {
         acc01.creditLimit();
         acc01.setMaintenanceTax();
         acc01.menu();
-        commandMenu = scanner.nextInt();
-            
+        commandMenu = scanner.next();
+
+
             switch (commandMenu) {
-                case 1:
+                case "Q":
+                    System.out.println("Sessão Encerrada");
+                    break;
+                case "C":
                     acc01.check();
                     break;
-                case 2: 
+                case "D":
                     acc01.deposit(scanner);
                     break;
-                case 3:
+                case "W":
                     acc01.withdraw(scanner);
                     break;
-                case 4:
+                case "P":
                     acc01.payBills(scanner);
-                case 5:
                     break;
-                default: 
+                case "I":
+                    SavingAccount SAcc = new SavingAccount(acc01.getNameClient(), acc01.getCodigo(), "Saving","Saver");
+                    SAcc.menu();
+                    break;
+                default:
                     System.out.println("Opção inválida");
             }
         } scanner.close();
