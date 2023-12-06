@@ -15,7 +15,6 @@ public class AppBank {
         acc01.menu();
         commandMenu = scanner.next();
 
-
             switch (commandMenu) {
                 case "Q":
                     System.out.println("Sessão Encerrada");
