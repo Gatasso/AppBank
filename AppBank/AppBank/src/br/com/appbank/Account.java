@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 public class Account implements Operations {
     protected String nameClient, codigo, accType;
-    private double depositValue, withDrawValue, paymentValue, maintenanceTax, creditLimit;
-    protected  double budgetClient;
+    private double budgetClient, depositValue, withDrawValue, paymentValue, maintenanceTax, creditLimit;
 
     public Account(String nameClient, String codigo, String accType){
         this.nameClient = nameClient;
@@ -54,22 +53,27 @@ public class Account implements Operations {
     public String getCodigo() {
         return codigo;
     }
+
+    public double getBudgetClient() {
+        return budgetClient;
+    }
+
     /*********************************************************************************************************************/
 // methods
 
     public void initialMenu() {
         System.out.printf("""
-                ***************************
+                ******************************
                          MGR BANK
 
-                NAME:  %s      %s\s
+                NAME:  %s   |   %s\s
                 %n""", nameClient, codigo);
 }
 
     public void  menu(){
         if(accType.equals("Checking")){
             System.out.printf("""
-                ***************************
+                ******************************
                           MGR BANK
                 Limite: R$%s\s
                 Taxa Manutenção: %s %%\s
@@ -82,7 +86,7 @@ public class Account implements Operations {
                 """,creditLimit,maintenanceTax);
         }else {
             System.out.printf("""
-                    ***************************
+                    ******************************
                               MGR BANK
                     %s                %s \s
                     1 - Consultar Saldo
@@ -95,15 +99,15 @@ public class Account implements Operations {
 
     @Override
     public void check() {
-        System.out.println("O seu saldo é de: R$" + budgetClient);
+        System.out.println("O seu saldo é de: R$" + this.budgetClient);
     }
 
     @Override
     public void deposit(Scanner scanner) {
         System.out.println("Qual o valor do depósito?");
         setDepositValue(scanner.nextDouble());
-        setBudgetClient(budgetClient + depositValue);
-        System.out.println("Saldo atualizado para: R$" + budgetClient);
+        setBudgetClient(this.budgetClient + this.depositValue);
+        System.out.println("Saldo atualizado para: R$" + this.budgetClient);
     }
 
     @Override
@@ -111,13 +115,13 @@ public class Account implements Operations {
         if(accType.equals("Checking")){
             System.out.println("Qual o valor do saque?");
             setWithDrawValue(scanner.nextDouble());
-            setBudgetClient(budgetClient- (withDrawValue *(1+maintenanceTax)));
-            System.out.println("Saldo atualizado para: R$" + budgetClient);
+            setBudgetClient(this.budgetClient- (this.withDrawValue *(1+maintenanceTax)));
+            System.out.println("Saldo atualizado para: R$" + this.budgetClient);
         }else{
             System.out.println("Qual o valor do saque?");
             setWithDrawValue(scanner.nextDouble());
-            setBudgetClient(budgetClient- withDrawValue);
-            System.out.println("Saldo atualizado para: R$" + budgetClient);
+            setBudgetClient(this.budgetClient- this.withDrawValue);
+            System.out.println("Saldo atualizado para: R$" + this.budgetClient);
         }
     }
 
@@ -125,14 +129,14 @@ public class Account implements Operations {
     public void payBills(Scanner scanner) {
         System.out.println("Informe o valor da conta:");
         setPaymentValue(scanner.nextDouble());
-        setBudgetClient(budgetClient - paymentValue);
-        System.out.println("Saldo atualizado para: R$" + budgetClient);
+        setBudgetClient(this.budgetClient - this.paymentValue);
+        System.out.println("Saldo atualizado para: R$" + this.budgetClient);
     }
 
     @Override
     public void creditLimit() {
-        if (budgetClient < 1000) this.creditLimit = 4000;
-        else if (budgetClient < 10000) this.creditLimit = 6000;
+        if (this.budgetClient < 1000) this.creditLimit = 4000;
+        else if (this.budgetClient < 10000) this.creditLimit = 6000;
         else this.creditLimit = 10000;
     }
 }
