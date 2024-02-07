@@ -6,13 +6,12 @@ import java.util.Scanner;
 
 public class Account implements Operations {
     private AccountType accType;
-    protected String nameClient, idCode;
+    protected String nameClient;
     private double budgetClient, depositValue, withDrawValue, paymentValue;
 
     public Account(String nameClient, AccountType accTypeENUM) {
         this.nameClient = nameClient;
         this.accType = accTypeENUM;
-//        accType.setUpLimits(this.budgetClient);
     }
 
     /*********************************************************************************************************************/
@@ -28,7 +27,6 @@ public class Account implements Operations {
         setDepositValue(scanner.nextDouble());
         setBudgetClient(this.budgetClient + this.depositValue);
         System.out.println("Saldo atualizado para: R$" + this.budgetClient);
-//        accType.setUpLimits(this.budgetClient);
     }
 
     @Override
@@ -37,7 +35,6 @@ public class Account implements Operations {
         setWithDrawValue(scanner.nextDouble());
         setBudgetClient(this.budgetClient - (this.withDrawValue * (1 + accType.getMaintenanceTax())));
         System.out.println("Saldo atualizado para: R$" + this.budgetClient);
-//        accType.setUpLimits(this.budgetClient);
     }
 
     @Override
@@ -46,7 +43,6 @@ public class Account implements Operations {
         setPaymentValue(scanner.nextDouble());
         setBudgetClient(this.budgetClient - this.paymentValue);
         System.out.println("Saldo atualizado para: R$" + this.budgetClient);
-//        accType.setUpLimits(this.budgetClient);
     }
 
     /*********************************************************************************************************************/
@@ -74,8 +70,6 @@ public class Account implements Operations {
     }
 
     public void printTaxes(){
-//        accType.setCreditLimit(budgetClient);
-//        accType.setMaintenanceTax(budgetClient);
         System.out.println(accType.getMaintenanceTax());
         System.out.println(accType.getCreditLimit());
     }
@@ -87,14 +81,5 @@ public class Account implements Operations {
 
     public AccountType getAccType() {
         return accType;
-    }
-
-    public String getIdCode() {
-        return idCode;
-    }
-
-    public double getBudgetClient() {
-
-        return budgetClient;
     }
 }

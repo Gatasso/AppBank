@@ -12,11 +12,7 @@ public enum AccountType {
 
     /**********************************************************************************************************************/
     private final String accTypeName;
-    private double maintenanceTax, creditLimit;
-
-    AccountType(String accTypeName) {
-        this.accTypeName = accTypeName;
-    }
+    private final double maintenanceTax, creditLimit;
 
     AccountType(String accTypeName, double maintenanceTax, double creditLimit) {
         this.accTypeName = accTypeName;

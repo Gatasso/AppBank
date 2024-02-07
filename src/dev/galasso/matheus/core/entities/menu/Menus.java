@@ -23,8 +23,7 @@ public enum Menus  {
                     System.out.printf("""
                             ********************************************************************
                                                             MGR BANK
-                            |     %s     |      %s      |     %s     |     %s     |\n          
-                            
+                            |     %s     |      %s      |     %s     |     %s     |
                             C - Consultar Saldo
                             D - Depósito
                             W - Saque
@@ -38,7 +37,7 @@ public enum Menus  {
                     System.out.printf("""
                             ********************************************************************
                                       MGR BANK
-                            |     %s     |      %s      |     %s     |     %s     |\n  
+                            |     %s     |      %s      |     %s     |     %s     |
                             C - Consultar Saldo
                             D - Depósito
                             W - Saque
@@ -50,7 +49,7 @@ public enum Menus  {
                     System.out.printf("""
                             ********************************************************************
                                       MGR BANK
-                            |     %s     |      %s      |     %s     |     %s     |\n  
+                            |     %s     |      %s      |     %s     |     %s     |
                             N - Novo Investimento
                             A - Aportar
                             C - Consultar Investimentos
