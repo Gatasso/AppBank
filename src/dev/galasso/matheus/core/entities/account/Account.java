@@ -60,7 +60,7 @@ public class Account implements Operations {
     }
 
     public void setWithDrawValue(double withDrawValue) throws MoneyNotEnoughException {
-        if (withDrawValue > budgetClient) {
+        if (withDrawValue > this.budgetClient) {
             throw new MoneyNotEnoughException();
         } else {
             this.withDrawValue = withDrawValue;
@@ -68,7 +68,7 @@ public class Account implements Operations {
     }
 
     public void setPaymentValue(double paymentValue) throws MoneyNotEnoughException{
-        if (this.paymentValue > (budgetClient + accType.getCreditLimit())) {
+        if (paymentValue > (this.budgetClient + accType.getCreditLimit())) {
             throw new MoneyNotEnoughException();
         } else this.paymentValue = paymentValue;
     }
